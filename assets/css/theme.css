@@ -2130,6 +2130,18 @@ body:not(.tt-boxed) .page-header-inner,
 	z-index: 9;
 }
 
+/* page header caption title */
+.ph-caption-title-small {
+	position: relative;
+	margin: 0;
+	font-size: 46px;
+	font-weight: bold;
+	font-weight: 500;
+	color: #FFF;
+	line-height: 1.3;
+	z-index: 9;
+}
+
 
 /* page header caption title ghost */
 .ph-caption-title-ghost {
