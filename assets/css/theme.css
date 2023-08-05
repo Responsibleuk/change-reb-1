@@ -10006,3 +10006,9 @@ body:not(.tt-boxed) .tt-footer-inner,
 
 
 .transparent {opacity: 0.1;}
+
+
+
+/* bespoke */
+
+.max-width-50 {max-width: 50vw;}
