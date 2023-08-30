@@ -2104,7 +2104,7 @@
 
 				// Clone hover title
 				var $piHoverTitle = $($this).find("span");
-				for (var i = 0; i < 5; i++) {
+				for (var i = 0; i < 2; i++) {
 					$piHoverTitle.clone().insertAfter($piHoverTitle);
 				}
 			});
