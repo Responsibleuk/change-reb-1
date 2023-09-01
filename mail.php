@@ -10,8 +10,8 @@
 $method = $_SERVER['REQUEST_METHOD'];
 
 // Initialize variables
-$project_name = "Your Project Name";
-$admin_email  = "james@story-x.co.uk"; // Replace with the desired email address
+$project_name = "Change Rebellion";
+$admin_email  = "mark.green@changerebellion.com"; // Replace with the desired email address
 $form_subject = "Contact Form Submission";
 
 $message = ""; // Initialize the message content
