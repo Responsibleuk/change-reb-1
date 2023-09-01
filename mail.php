@@ -1,4 +1,5 @@
-<?php 
+
+<?php
 
 // ==================================================
 // uniMail - v.1.0.1
@@ -6,54 +7,50 @@
 // More info: https://github.com/agragregra/uniMail
 // ==================================================
 
-
 $method = $_SERVER['REQUEST_METHOD'];
 
-//Script Foreach
-$c = true;
-if ( $method === 'POST' ) {
+// Initialize variables
+$project_name = "Your Project Name";
+$admin_email  = "james@story-x.co.uk"; // Replace with the desired email address
+$form_subject = "Contact Form Submission";
 
-	$project_name = trim($_POST["project_name"]);
-	$admin_email  = trim($_POST["admin_email"]);
-	$form_subject = trim($_POST["form_subject"]);
+$message = ""; // Initialize the message content
 
-	foreach ( $_POST as $key => $value ) {
-		if ( $value != "" && $key != "project_name" && $key != "admin_email" && $key != "form_subject" ) {
+// Check if the form was submitted using POST method
+if ($method === 'POST') {
+	foreach ($_POST as $key => $value) {
+		if ($value != "" && $key != "project_name" && $key != "admin_email" && $key != "form_subject") {
 			$message .= "
-			" . ( ($c = !$c) ? '<tr>':'<tr style="background-color: #f3f3f3;">' ) . "
+			" . (($c = !$c) ? '<tr>' : '<tr style="background-color: #f3f3f3;">') . "
 			<td style='padding: 10px; border: #e9e9e9 1px solid; width: 100px;'><strong>$key:</strong></td>
 			<td style='padding: 10px; border: #e9e9e9 1px solid;'>$value</td>
-		</tr>
+			</tr>
 		";
+		}
 	}
-}
-} else if ( $method === 'GET' ) {
-
-	$project_name = trim($_GET["project_name"]);
-	$admin_email  = trim($_GET["admin_email"]);
-	$form_subject = trim($_GET["form_subject"]);
-
-	foreach ( $_GET as $key => $value ) {
-		if ( $value != "" && $key != "project_name" && $key != "admin_email" && $key != "form_subject" ) {
+} elseif ($method === 'GET') {
+	foreach ($_GET as $key => $value) {
+		if ($value != "" && $key != "project_name" && $key != "admin_email" && $key != "form_subject") {
 			$message .= "
-			" . ( ($c = !$c) ? '<tr>':'<tr style="background-color: #f3f3f3;">' ) . "
+			" . (($c = !$c) ? '<tr>' : '<tr style="background-color: #f3f3f3;">') . "
 			<td style='padding: 10px; border: #e9e9e9 1px solid; width: 100px;'><strong>$key:</strong></td>
 			<td style='padding: 10px; border: #e9e9e9 1px solid;'>$value</td>
-		</tr>
+			</tr>
 		";
+		}
 	}
-}
 }
 
 $message = "<table style='width: 100%;'>$message</table>";
 
 function adopt($text) {
-	return '=?UTF-8?B?'.base64_encode($text).'?=';
+	return '=?UTF-8?B?' . base64_encode($text) . '?=';
 }
 
 $headers = "MIME-Version: 1.0" . PHP_EOL .
-"Content-Type: text/html; charset=utf-8" . PHP_EOL .
-'From: '.adopt($project_name).' <'.$admin_email.'>' . PHP_EOL .
-'Reply-To: '.$admin_email.'' . PHP_EOL;
+	"Content-Type: text/html; charset=utf-8" . PHP_EOL .
+	'From: ' . adopt($project_name) . ' <' . $admin_email . '>' . PHP_EOL .
+	'Reply-To: ' . $admin_email . '' . PHP_EOL;
 
-mail($admin_email, adopt($form_subject), $message, $headers );
+mail($admin_email, adopt($form_subject), $message, $headers);
+?>
