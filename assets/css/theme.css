@@ -9819,6 +9819,7 @@ body:not(.tt-boxed) .tt-footer-inner,
 
 /* Footer copyright */
 #tt-footer .tt-copyright {
+	text-align: center;
 	color: #888;
 }
 #tt-footer .tt-copyright a {
